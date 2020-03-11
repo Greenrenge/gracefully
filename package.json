@@ -1,0 +1,27 @@
+{
+  "name": "@greenrenge/gracefully",
+  "version": "1.0.0",
+  "description": "wrapper of lightship [ liveness, readiness, graceful shutdown]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Greenrenge/gracefully.git"
+  },
+  "keywords": [
+    "lightship",
+    "liveness",
+    "readiness"
+  ],
+  "author": "Sorasak S.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Greenrenge/gracefully/issues"
+  },
+  "homepage": "https://github.com/Greenrenge/gracefully#readme",
+  "dependencies": {
+    "lightship": "^6.1.0"
+  }
+}
