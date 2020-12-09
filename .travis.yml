@@ -1,16 +1,15 @@
 language: node_js
 node_js:
-  - "12.14.0"
+- 12.14.0
 script:
-  - npm run test
-  - npm run build
+- npm run test
+- npm run build
 deploy:
-  deploy:
+  deploy: 
   provider: npm
-  # access: public # travis v2 only
   skip_cleanup: true
   email: greenrenge@gmail.com
   api_key:
-    secure: dI36V9yLvpbq8gujc+StijVYrf28QB7A3/AMA25xjBT+mxs04vcEoYV+EsG5I1rrxudA49L37WSnThii4Eh7H3iunNDUYbqqHEqkgOxeNKKulrK5arsfKbsSe00Wwtkx4z8DetxINgaBdH6CSg1WXMDn2yW6E2U0iw7Ev82RpFcFQkoqqp75GIb5ZAaQ9r0JC3Md8dTGDQg3RfBpGunEm06axNsJi7emLrMFs8MduZOIEluR57nKsOp0TRwn92g5KdoGw2s6Cb/LC9n4LN/wYJgZrPz2sUJeAXRW7+EOWhBt8RlltQUEmAuyhO2YWrFmWIo56zR/vi7Ktyziz8zjywmcR3POLGxHZ064TN5Bho5ROkekE3zLsrw8K2uav6fTDD4gB8gkycTmCIaX5Y9I3sadwMBKU9hHdVXzbzwxyRWB/omru0wFOx/TqiBYUrfyj5Bb7OJrPlaN7bVghHsKyoK5u+RDuBFOqi4dRVkJ1kcGqKnUzPKWv12poyldQEKQN0TlxGWWTCa9er+xxeCkSbxrIvwXov2MwvFc+H4EtpmKF8HL94Hp+Ifyy3YGZRX4wrE2ZQdr+WwzmA1OQOI7TSlWa2HPt8atGipAB8kVj6OBNQFWWSCsoqjEdtN/5ACMQ+qVcwxK38ju5YUAx59s1yDi+fuB9kJn4K2MFM2oM7Q=
+    secure: O78ubYx4ubEbJ1hTGE3ikBDwpk+3pSRTmF/nh9IFz8yBCx/8+6ZsZed4zY4NcG1YDKQ8esl2cWPc0vxjAPonwRH7pMIXdGwIVE75n0AcXQ4piFjLAQK/94IG2/Ds1G7BIxK37GBsSN7n6JaEjaed1mlaVZrBoxUaSfuKU50oksnAPRgVJoT9rcztS1IEb0XHWE2kYt+BAAfUbRyHkff9ofncbhTYm8O8wezYiHAtgp9pEtr/UyGX/3lAgPx0VntDak83y16/bLu/uibufXjHuRKDKB+GBrZ+WWCeffuaIfLZ6qpB1MpU3nmAaS6chTngzYcw6LCPfC3jtKBx/mht5psPuxafP0FccuE5GikyqPoB7mraFsmP4Xfmj2+qyBAbparVt/OrppfjJCWL+lLIPx47tRWCXdhS9c2NfJXJLaiwsA6YlcS351raEZKj/WYQnHIvh9Q9c1/HnbnhI17oscfB8dRP34CZhkL/bvGujMLuw414qI5bUBXq5dV1v7GsLvSeSakmvW620y7IIkIH5yfa8srHSWQ6wat3cwzmqYM23JZntg2Yjez+BOIYnfj5mjOsJrdnJxgP7z4esgNBkw7s7BQBwEQ2mbxZYE0m8bDwJm910OV0CQga0VwPyItCIc0ZjUqxc/x1SmK9Nf/DyCdyRDJ/25f7/b7lk0F1Qd0=
   on:
     tags: true
