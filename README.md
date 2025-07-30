@@ -26,7 +26,7 @@ npm install --save @greenrenge/gracefully
 ```javascript
 import createLightship from "@greenrenge/gracefully"
 
-const { createReadiness } = createLightship()
+const { createReadiness } = await createLightship()
 const [mongooseDbReady, expressReady, senecaReady] = createReadiness(3)
 
 // for mongoose connection

@@ -4,9 +4,6 @@ import sinonChai from "sinon-chai"
 import chaiAsPromised from "chai-as-promised"
 import chaid from "chaid"
 
-chai
-  .use(sinonChai)
-  .use(chaiAsPromised)
-  .use(chaid)
+chai.use(sinonChai).use(chaiAsPromised).use(chaid)
 
- chai.should()
+chai.should()

@@ -1,10 +1,31 @@
-import * as Lightship from "lightship"
-
-const { createLightship: createLightShipInstance } = Lightship
+import {
+  createLightship as createLightShipInstance,
+  Lightship,
+} from "lightship"
 
 const DEFAULT_PORT = 13000
 
-const create = (
+interface CreateOptions {
+  detectKubernetes?: boolean
+  port?: number
+  signals?: string[]
+  terminate?: () => Promise<void>
+  gracefulShutdownTimeout?: number
+  enableLog?: boolean
+  randomPortOnLocal?: boolean
+}
+
+interface ReadinessHandler {
+  (): () => void
+  toNotReady: () => void
+}
+
+interface LightshipWrapper {
+  lightship: Lightship
+  createReadiness: (number?: number) => ReadinessHandler[]
+}
+
+const create = async (
   {
     detectKubernetes,
     port: customPort = DEFAULT_PORT,
@@ -13,9 +34,9 @@ const create = (
     gracefulShutdownTimeout,
     enableLog,
     randomPortOnLocal,
-  } = { port: DEFAULT_PORT },
-) => {
-  if (enableLog) process.env.ROARR_LOG = true
+  }: CreateOptions = { port: DEFAULT_PORT },
+): Promise<LightshipWrapper> => {
+  if (enableLog) process.env.ROARR_LOG = "true"
   const isOnLocal = !process.env.KUBERNETES_SERVICE_HOST
 
   if (isOnLocal && !randomPortOnLocal) {
@@ -23,20 +44,20 @@ const create = (
     process.env.KUBERNETES_SERVICE_HOST = "kubernetes.default.svc.cluster.local"
   }
   const isTestENV = process.env.NODE_ENV === "test"
-  const randomPort =
-    ["true", true].includes(process.env.LIGHTSHIP_RANDOM_PORT) || isTestENV
+  const randomPort = process.env.LIGHTSHIP_RANDOM_PORT === "true" || isTestENV
   const port = randomPort ? 0 : customPort // random port
 
-  const lightship = createLightShipInstance({
+  const lightship = await createLightShipInstance({
     ...(detectKubernetes && { detectKubernetes }),
     ...(port && { port }),
     ...(signals && { signals }),
     ...(terminate && { terminate }),
     ...(gracefulShutdownTimeout && { gracefulShutdownTimeout }),
   })
+
   if (isTestENV) lightship.server.close()
 
-  let createdReadiness
+  let createdReadiness: ReadinessHandler[] | undefined
   const wrapLightship = {
     lightship,
     createReadiness: (number = 1) => {
