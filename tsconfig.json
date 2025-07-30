@@ -15,7 +15,7 @@
 		"declarationMap": true,
 		"sourceMap": true,
 		"outDir": "dist",
-		"rootDir": ".",
+		"rootDir": "src",
 		"resolveJsonModule": true,
 		"noEmit": true,
 		"allowJs": true
@@ -29,9 +29,7 @@
 		}
 	},
 	"include": [
-		"src/**/*",
-		"test/**/*",
-		"playground/**/*"
+		"src/**/*"
 	],
 	"exclude": [
 		"node_modules",
