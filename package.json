@@ -1,6 +1,6 @@
 {
   "name": "@greenrenge/gracefully",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "liveness and readiness wrapper using lightship for node.js",
   "engines": {
     "node": ">=18"

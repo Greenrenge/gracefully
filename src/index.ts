@@ -1,11 +1,10 @@
-import {
-  createLightship as createLightShipInstance,
-  Lightship,
-} from "lightship"
+import { createLightship as createLightShipInstance } from "lightship"
+import type { Lightship } from "lightship"
+export type * from "lightship"
 
 const DEFAULT_PORT = 13000
 
-interface CreateOptions {
+export interface CreateOptions {
   detectKubernetes?: boolean
   port?: number
   signals?: string[]
@@ -15,12 +14,12 @@ interface CreateOptions {
   randomPortOnLocal?: boolean
 }
 
-interface ReadinessHandler {
+export interface ReadinessHandler {
   (): () => void
   toNotReady: () => void
 }
 
-interface LightshipWrapper {
+export interface LightshipWrapper {
   lightship: Lightship
   createReadiness: (number?: number) => ReadinessHandler[]
 }
