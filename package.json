@@ -18,7 +18,6 @@
   "types": "./dist/esm/index.d.ts",
   "homepage": "https://github.com/greenrenge/gracefully#readme",
   "files": [
-    "src",
     "dist",
     "README.md"
   ],
@@ -33,7 +32,7 @@
     "prepublishOnly": "npm run build",
     "prettify": "prettier --write '{playground,src,test}/**/*.{js,ts}'",
     "preplayground": "npm run build",
-    "playground": "node_modules/.bin/nodemon playground/index.js --watch playground --exec tsx",
+    "playground": "nodemon playground/index.js --watch playground --exec tsx",
     "version": "standard-changelog && git add CHANGELOG.md"
   },
   "husky": {
